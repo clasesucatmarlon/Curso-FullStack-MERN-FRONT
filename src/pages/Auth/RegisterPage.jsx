@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import { validateEmail } from '../../validations/Email';
 import Label from '../../components/commons/Label';
+import Input from '../../components/commons/Input';
 
 const RegisterPage = () => {
     const [firstName, setFirstName] = useState('');
@@ -32,58 +33,27 @@ const RegisterPage = () => {
         }
 
         // TODO:  Hacer petición para crear usuario
+        console.log(firstName, lastName, email, password, confirmPassword)
 
     };
 
     return (
         <form onSubmit={onSubmit} className='space-y-4'>
             <div className='w-full max-w-lg relative'>
-                <Label contentLabel="Nombre"/>
-                <input
-                    id='name'
-                    type='text'
-                    className='w-full border border-gray-500/30 bg-transparent py-3 px-5 rounded-full outline-none placeholder:text-gray-400'
-                    placeholder='Ingrese nombres'
-                    autoComplete='off'
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                />
+                <Label contentLabel="Nombre" />
+                <Input contentPlaceholder="Ingrese nombres" contentValue={firstName} funcChange={setFirstName} />
             </div>
             <div className='w-full max-w-lg relative'>
-                <Label contentLabel="Apellidos"/>
-                <input
-                    id='lastName'
-                    type='text'
-                    className='w-full border border-gray-500/30 bg-transparent py-3 px-5 rounded-full outline-none placeholder:text-gray-400'
-                    placeholder='Ingrese apellidos'
-                    autoComplete='off'
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                />
+                <Label contentLabel="Apellidos" />
+                <Input contentPlaceholder="Ingrese apellidos" contentValue={lastName} funcChange={setLastName} />
             </div>
             <div className='w-full max-w-lg relative'>
-                <Label contentLabel="Correo electrónico"/>
-                <input
-                    id='email'
-                    type='text'
-                    className='w-full border border-gray-500/30 bg-transparent py-3 px-5 rounded-full outline-none placeholder:text-gray-400'
-                    placeholder='tucorreo@example.com'
-                    autoComplete='off'
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
+                <Label contentLabel="Correo electrónico" />
+                <Input contentPlaceholder="correo@correo.com" contentValue={email} funcChange={setEmail} />
             </div>
             <div className='w-full max-w-lg relative'>
-            <Label contentLabel="Contraseña"/>
-                <input
-                    id='password'
-                    type={showPassword ? 'text' : 'password'}
-                    className='w-full border border-gray-500/30 bg-transparent py-3 px-5 rounded-full outline-none placeholder:text-gray-400'
-                    placeholder='********'
-                    autoComplete='off'
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+                <Label contentLabel="Contraseña" />
+                <Input contentPlaceholder="******" contentValue={password} funcChange={setPassword} />
                 <button
                     type='button'
                     onClick={() => setShowPassword(!showPassword)}
@@ -97,16 +67,8 @@ const RegisterPage = () => {
                 </button>
             </div>
             <div className='w-full max-w-lg relative'>
-                <Label contentLabel="Confirmar contraseña"/>
-                <input
-                    id='confirmPassword'
-                    type={showPassword ? 'text' : 'password'}
-                    className='w-full border border-gray-500/30 bg-transparent py-3 px-5 rounded-full outline-none placeholder:text-gray-400'
-                    placeholder='********'
-                    autoComplete='off'
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                />
+                <Label contentLabel="Confirmar contraseña" />
+                <Input contentPlaceholder="******" contentValue={confirmPassword} funcChange={setConfirmPassword} />
                 <button
                     type='button'
                     onClick={() => setShowPassword(!showPassword)}
@@ -130,7 +92,7 @@ const RegisterPage = () => {
             </div>
             <div className='text-center'>
                 <p>
-                    ¿Ya tienes una cuenta?{' '}
+                    ¿Ya tengo cuenta{' '}
                     <Link to='/auth/login' className='font-bold hover:underline'>
                         Ingresar
                     </Link>
