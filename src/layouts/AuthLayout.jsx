@@ -2,10 +2,10 @@ import { Outlet, useLocation } from "react-router-dom";
 
 const AuthLayout = () => {
 
-    const {pathname} = useLocation();
-    
+    const { pathname } = useLocation();
+
     // GENERAR TÍTULO DINÁMICO
-    let title ="";
+    let title = "";
 
     switch (pathname) {
         case "/auth/login":
@@ -20,11 +20,13 @@ const AuthLayout = () => {
     }
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center">
-            <h1>{pathname.startsWith("/auth/change-password/") ? "Actualizar password" :  title}</h1>
-            <main>
-                <Outlet />
-            </main>
+        <div className="min-h-screen flex flex-col justify-center bg-gray-100">
+            <div className="max-w-md mx-auto w-full ">
+                <h1 className="text-[1.5rem] font-bold mb-10 text-center">{pathname.startsWith("/auth/change-password/") ? "Actualizar password" : title}</h1>
+                <main>
+                    <Outlet />
+                </main>
+            </div>
         </div>
     )
 }
