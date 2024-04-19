@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
+import { validateEmail } from '../../validations/Email';
 
 const RegisterPage = () => {
     const [firstName, setFirstName] = useState('');
@@ -12,7 +13,25 @@ const RegisterPage = () => {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log(firstName, lastName, email, password, confirmPassword)
+
+        if ([firstName, lastName, email, password, confirmPassword].includes('')) {
+            return toast.error('Todos los campos son obligatorios');
+        }
+
+        if (!validateEmail(email)) {
+            return toast.error('Email no válido');
+        }
+
+        if (password.length <= 5) {
+            return toast.error('La contraseña debe contener al menos 6 caracteres');
+        }
+
+        if (password !== confirmPassword) {
+            return toast.error('Las contraseñas no coinciden');
+        }
+
+        // TODO:  Hacer petición para crear usuario
+
     };
 
     return (
