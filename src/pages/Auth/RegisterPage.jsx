@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import { validateEmail } from '../../validations/Email';
+import Label from '../../components/commons/Label';
 
 const RegisterPage = () => {
     const [firstName, setFirstName] = useState('');
@@ -37,12 +38,7 @@ const RegisterPage = () => {
     return (
         <form onSubmit={onSubmit} className='space-y-4'>
             <div className='w-full max-w-lg relative'>
-                <label
-                    htmlFor='name'
-                    className='absolute -top-2 left-2 px-4 font-bold text-xs bg-gray-100'
-                >
-                    Nombre
-                </label>
+                <Label contentLabel="Nombre"/>
                 <input
                     id='name'
                     type='text'
@@ -54,12 +50,7 @@ const RegisterPage = () => {
                 />
             </div>
             <div className='w-full max-w-lg relative'>
-                <label
-                    htmlFor='lastName'
-                    className='absolute -top-2 left-2 px-4 font-bold text-xs bg-gray-100'
-                >
-                    Apellidos
-                </label>
+                <Label contentLabel="Apellidos"/>
                 <input
                     id='lastName'
                     type='text'
@@ -71,12 +62,7 @@ const RegisterPage = () => {
                 />
             </div>
             <div className='w-full max-w-lg relative'>
-                <label
-                    htmlFor='email'
-                    className='absolute -top-2 left-2 px-4 font-bold text-xs bg-gray-100'
-                >
-                    Correo electrónico
-                </label>
+                <Label contentLabel="Correo electrónico"/>
                 <input
                     id='email'
                     type='text'
@@ -88,12 +74,7 @@ const RegisterPage = () => {
                 />
             </div>
             <div className='w-full max-w-lg relative'>
-                <label
-                    htmlFor='password'
-                    className='absolute -top-2 left-2 px-4 font-bold text-xs bg-gray-100'
-                >
-                    Contraseña
-                </label>
+            <Label contentLabel="Contraseña"/>
                 <input
                     id='password'
                     type={showPassword ? 'text' : 'password'}
@@ -116,12 +97,7 @@ const RegisterPage = () => {
                 </button>
             </div>
             <div className='w-full max-w-lg relative'>
-                <label
-                    htmlFor='confirmPassword'
-                    className='absolute -top-2 left-2 px-4 font-bold text-xs bg-gray-100'
-                >
-                    Confirmar contraseña
-                </label>
+                <Label contentLabel="Confirmar contraseña"/>
                 <input
                     id='confirmPassword'
                     type={showPassword ? 'text' : 'password'}
