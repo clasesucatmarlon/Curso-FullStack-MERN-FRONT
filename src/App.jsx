@@ -8,6 +8,7 @@ import LoginPage from "./pages/Auth/LoginPage";
 import RegisterPage from "./pages/Auth/RegisterPage";
 import ForgotPasswordPage from "./pages/Auth/ForgotPasswordPage";
 import ChangePassword from "./pages/Auth/ChangePassword";
+import ConfirmAccount from "./pages/Auth/ConfirmAccount";
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
       <Route element={<AuthLayout />}>
         <Route path="/auth/login" element={<LoginPage />} />
         <Route path="/auth/register" element={<RegisterPage />} />
+        <Route path="/auth/confirm-account" element={<ConfirmAccount />} />
         <Route path="/auth/forgot-password" element={<ForgotPasswordPage />} />
         <Route path="/auth/change-password/:token" element={<ChangePassword />} />
       </Route>
