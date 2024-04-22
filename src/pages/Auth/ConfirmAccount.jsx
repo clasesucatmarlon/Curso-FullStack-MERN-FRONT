@@ -36,22 +36,7 @@ const ConfirmAccount = () => {
     return (
         <form onSubmit={onSubmit} className='space-y-7'>
             <div className='w-full max-w-lg relative'>
-                {/* <label
-                    htmlFor='name'
-                    className='absolute -top-2 left-2 px-4 font-bold text-xs bg-gray-100'
-                >
-                    Código de verificación
-                </label> */}
                 <Label contentLabel="Token confirmación"/>
-                {/* <input
-                    id='name'
-                    type='text'
-                    className='w-full border border-gray-500/30 bg-transparent py-3 px-5 rounded-full outline-none placeholder:text-gray-400'
-                    placeholder='123456'
-                    autoComplete='off'
-                    value={tokenConfirmation}
-                    onChange={(e) => setTokenConfirmation(e.target.value)}
-                /> */}
                 <Input idInput="token" contentPlaceholder="123456" contentValue={tokenConfirmation} funcChange={setTokenConfirmation}/>
             </div>
             <div>
