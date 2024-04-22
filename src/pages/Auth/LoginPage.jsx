@@ -5,6 +5,7 @@ import api from "../../lib/Axios";
 import Label from "../../components/commons/Label";
 import InputPassword from "../../components/commons/InputPassword";
 import Input from "../../components/commons/Input";
+import { validateEmail } from "../../validations/Email";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -18,6 +19,14 @@ const LoginPage = () => {
 
     if ([email, password].includes("")) {
       return toast.error("Todos los campos son obligatorios");
+    }
+
+    if (!validateEmail(email)) {
+      return toast.error("Email no válido");
+    }
+
+    if (password.length <= 5) {
+      return toast.error("La contraseña debe tener al menos 6 caracteres");
     }
 
     try {
