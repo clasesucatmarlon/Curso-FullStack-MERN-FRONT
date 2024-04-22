@@ -14,6 +14,9 @@ const AuthLayout = () => {
         case "/auth/register":
             title = "Crear cuenta";
             break;
+        case "/auth/confirm-account":
+            title = "Confirmar cuenta";
+            break;
         case "/auth/forgot-password":
             title = "Recuperar password";
             break;
