@@ -61,19 +61,19 @@ const RegisterPage = () => {
         <form onSubmit={onSubmit} className='space-y-4'>
             <div className='w-full max-w-lg relative'>
                 <Label contentLabel="Nombre" />
-                <Input contentPlaceholder="Ingrese nombres" contentValue={firstName} funcChange={setFirstName} />
+                <Input idInput="firstName" contentPlaceholder="Ingrese nombres" contentValue={firstName} funcChange={setFirstName} />
             </div>
             <div className='w-full max-w-lg relative'>
                 <Label contentLabel="Apellidos" />
-                <Input contentPlaceholder="Ingrese apellidos" contentValue={lastName} funcChange={setLastName} />
+                <Input idInput="lastName" contentPlaceholder="Ingrese apellidos" contentValue={lastName} funcChange={setLastName} />
             </div>
             <div className='w-full max-w-lg relative'>
                 <Label contentLabel="Correo electrónico" />
-                <Input contentPlaceholder="correo@correo.com" contentValue={email} funcChange={setEmail} />
+                <Input idInput="email" contentPlaceholder="correo@correo.com" contentValue={email} funcChange={setEmail} />
             </div>
             <div className='w-full max-w-lg relative'>
                 <Label contentLabel="Contraseña" />
-                <InputPassword contentPlaceholder="******" contentValue={password} funcChange={setPassword} showPassword={showPassword} />
+                <InputPassword idInput="password" contentPlaceholder="******" contentValue={password} funcChange={setPassword} showPassword={showPassword} />
                 <button
                     type='button'
                     onClick={() => setShowPassword(!showPassword)}
@@ -88,7 +88,7 @@ const RegisterPage = () => {
             </div>
             <div className='w-full max-w-lg relative'>
                 <Label contentLabel="Confirmar contraseña" />
-                <InputPassword contentPlaceholder="******" contentValue={confirmPassword} funcChange={setConfirmPassword} showPassword={showPassword} />
+                <InputPassword idInput="confirmPassword" contentPlaceholder="******" contentValue={confirmPassword} funcChange={setConfirmPassword} showPassword={showPassword} />
                 <button
                     type='button'
                     onClick={() => setShowPassword(!showPassword)}
