@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 import { validateEmail } from '../../validations/Email';
 import Label from '../../components/commons/Label';
 import Input from '../../components/commons/Input';
 import InputPassword from '../../components/commons/InputPassword';
+import api from '../../lib/Axios';
 
 const RegisterPage = () => {
     const [firstName, setFirstName] = useState('');
@@ -13,6 +14,8 @@ const RegisterPage = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showPassword, setShowPassword] = useState(false);
+
+    const navigate = useNavigate();
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -33,7 +36,24 @@ const RegisterPage = () => {
             return toast.error('Las contraseñas no coinciden');
         }
 
-        // TODO:  Hacer petición para crear usuario
+        // PROCESO PARA CREAR USUARIO
+        try {
+            const { data } = await api.post("/users", { firstName, lastName, email, password });
+
+            if (data.response === 'success') {
+                toast.success(data.message);
+                setFirstName('');
+                setLastName('');
+                setEmail('');
+                setPassword('');
+                setConfirmPassword('');
+                navigate('/auth/confirm-account');
+            }
+
+        } catch (error) {
+            console.log(`[CREATE_USER_ERROR]: ${error}`);
+            toast.error(error.response.data.message);
+        }
 
     };
 
@@ -53,7 +73,7 @@ const RegisterPage = () => {
             </div>
             <div className='w-full max-w-lg relative'>
                 <Label contentLabel="Contraseña" />
-                <InputPassword contentPlaceholder="******" contentValue={password} funcChange={setPassword} showPassword={showPassword}/>
+                <InputPassword contentPlaceholder="******" contentValue={password} funcChange={setPassword} showPassword={showPassword} />
                 <button
                     type='button'
                     onClick={() => setShowPassword(!showPassword)}
@@ -68,7 +88,7 @@ const RegisterPage = () => {
             </div>
             <div className='w-full max-w-lg relative'>
                 <Label contentLabel="Confirmar contraseña" />
-                <InputPassword contentPlaceholder="******" contentValue={confirmPassword} funcChange={setConfirmPassword} showPassword={showPassword}/>
+                <InputPassword contentPlaceholder="******" contentValue={confirmPassword} funcChange={setConfirmPassword} showPassword={showPassword} />
                 <button
                     type='button'
                     onClick={() => setShowPassword(!showPassword)}
