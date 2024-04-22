@@ -4,6 +4,7 @@ import { toast } from 'sonner';
 import { validateEmail } from '../../validations/Email';
 import Label from '../../components/commons/Label';
 import Input from '../../components/commons/Input';
+import InputPassword from '../../components/commons/InputPassword';
 
 const RegisterPage = () => {
     const [firstName, setFirstName] = useState('');
@@ -33,7 +34,6 @@ const RegisterPage = () => {
         }
 
         // TODO:  Hacer petición para crear usuario
-        console.log(firstName, lastName, email, password, confirmPassword)
 
     };
 
@@ -53,7 +53,7 @@ const RegisterPage = () => {
             </div>
             <div className='w-full max-w-lg relative'>
                 <Label contentLabel="Contraseña" />
-                <Input contentPlaceholder="******" contentValue={password} funcChange={setPassword} />
+                <InputPassword contentPlaceholder="******" contentValue={password} funcChange={setPassword} showPassword={showPassword}/>
                 <button
                     type='button'
                     onClick={() => setShowPassword(!showPassword)}
@@ -68,7 +68,7 @@ const RegisterPage = () => {
             </div>
             <div className='w-full max-w-lg relative'>
                 <Label contentLabel="Confirmar contraseña" />
-                <Input contentPlaceholder="******" contentValue={confirmPassword} funcChange={setConfirmPassword} />
+                <InputPassword contentPlaceholder="******" contentValue={confirmPassword} funcChange={setConfirmPassword} showPassword={showPassword}/>
                 <button
                     type='button'
                     onClick={() => setShowPassword(!showPassword)}
