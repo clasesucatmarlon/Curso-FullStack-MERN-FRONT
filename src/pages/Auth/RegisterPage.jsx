@@ -21,19 +21,19 @@ const RegisterPage = () => {
         e.preventDefault();
 
         if ([firstName, lastName, email, password, confirmPassword].includes('')) {
-            return toast.error('Todos los campos son obligatorios');
+            return toast.warning("Todos los campos son obligatorios", { icon: <i className="fi fi-rr-light-emergency-on text-xl pr-3"></i> });
         }
 
         if (!validateEmail(email)) {
-            return toast.error('Email no válido');
+            return toast.info("Email no válido", { icon: <i className="fi fi-br-envelope-ban text-xl pr-3"></i> });
         }
 
         if (password.length <= 5) {
-            return toast.error('La contraseña debe contener al menos 6 caracteres');
+            return toast.info("La contraseña debe tener al menos 6 caracteres", { icon: <i className="fi fi-br-key text-xl pr-3"></i> });
         }
 
         if (password !== confirmPassword) {
-            return toast.error('Las contraseñas no coinciden');
+            return toast.error('Las contraseñas no coinciden', { icon: <i className="fi fi-rs-user-key text-xl pr-3"></i> });
         }
 
         // PROCESO PARA CREAR USUARIO
@@ -52,7 +52,7 @@ const RegisterPage = () => {
 
         } catch (error) {
             console.log(`[CREATE_USER_ERROR]: ${error}`);
-            toast.error(error.response.data.message);
+            toast.error(error.response.data.message, { icon: <i className="fi fi-br-fail text-xl pr-3"></i> });
         }
 
     };
