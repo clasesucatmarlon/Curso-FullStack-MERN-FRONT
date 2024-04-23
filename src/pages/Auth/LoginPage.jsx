@@ -46,6 +46,9 @@ const LoginPage = () => {
     } catch (error) {
       console.log(`[LOGIN_USER_ERROR]: ${error}`);
       toast.error(error.response.data.message, { icon: <i className="fi fi-br-fail text-xl pr-3"></i> });
+      if (error.response.data.code === 401) {
+        navigate('/auth/confirm-account');
+      }
     }
   };
 
