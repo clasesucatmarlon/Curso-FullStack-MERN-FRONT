@@ -1,13 +1,16 @@
 import useAuth from "../../hooks/useAuth";
 
-const Header = () => {
+const Header = ({ showSidebar, setShowSidebar }) => {
 	const { auth } = useAuth();
 
 	return (
 
-		<header className="h-[8vh] flex items-center justify-between px-5 lg:px-8">
-			<section>
-				boton
+		<header className="h-[8vh] flex items-center justify-between px-5 lg:px-8 ">
+			<section >
+				<button onClick={() => setShowSidebar(true)} className="lg:hidden">
+					<i className="fi fi-rr-apps"></i>
+
+				</button>
 			</section>
 			<nav>
 				<ul>
@@ -21,7 +24,7 @@ const Header = () => {
 								{auth.firstName.split(" ")[0]}{' '}
 								{auth.lastName.split(" ")[0]}
 							</h5>
-							<p className="text-sm text-gray-400">{auth.email}</p>
+							<p className="text-[.6rem] lg:text-sm text-gray-400">{auth.email}</p>
 						</div>
 
 					</li>
