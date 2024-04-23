@@ -18,15 +18,15 @@ const LoginPage = () => {
     e.preventDefault();
 
     if ([email, password].includes("")) {
-      return toast.error("Todos los campos son obligatorios");
+      return toast.warning("Todos los campos son obligatorios", { icon: <i className="fi fi-rr-light-emergency-on text-xl pr-3"></i> });
     }
 
     if (!validateEmail(email)) {
-      return toast.error("Email no válido");
+      return toast.info("Email no válido", { icon: <i className="fi fi-br-envelope-ban text-xl pr-3"></i> });
     }
 
     if (password.length <= 5) {
-      return toast.error("La contraseña debe tener al menos 6 caracteres");
+      return toast.info("La contraseña debe tener al menos 6 caracteres", { icon: <i className="fi fi-br-key text-xl pr-3"></i> });
     }
 
     try {
@@ -45,7 +45,7 @@ const LoginPage = () => {
       }
     } catch (error) {
       console.log(`[LOGIN_USER_ERROR]: ${error}`);
-      toast.error(error.response.data.message);
+      toast.error(error.response.data.message, { icon: <i className="fi fi-br-fail text-xl pr-3"></i> });
     }
   };
 
@@ -59,7 +59,7 @@ const LoginPage = () => {
       </div>
       <div className="w-full max-w-lg relative">
         <Label contentLabel="Contraseña" />
-        <InputPassword idInput="inputPassword" contentPlaceholder="******" contentValue={password} funcChange={setPassword} showPassword={showPassword}/>
+        <InputPassword idInput="inputPassword" contentPlaceholder="******" contentValue={password} funcChange={setPassword} showPassword={showPassword} />
 
         <button
           type="button"
