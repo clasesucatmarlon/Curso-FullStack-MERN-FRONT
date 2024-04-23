@@ -6,6 +6,7 @@ import Label from "../../components/commons/Label";
 import InputPassword from "../../components/commons/InputPassword";
 import Input from "../../components/commons/Input";
 import { validateEmail } from "../../validations/Email";
+import useAuth from "../../hooks/useAuth";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -13,6 +14,8 @@ const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
+
+  const {setAuth} = useAuth();
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -37,8 +40,7 @@ const LoginPage = () => {
 
       if (data.response === "success") {
         localStorage.setItem("token-tickets", data.token);
-        // setAuth(data.user);
-        console.log("DATA: ", data.user)
+        setAuth(data.user);
         setEmail("");
         setPassword("");
         navigate("/");
